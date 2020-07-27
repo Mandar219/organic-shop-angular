@@ -1,0 +1,19 @@
+#login {
+    height: 500px;
+    width: 450px;
+    position: relative;
+    top: 0;
+    left: 330px;
+}
+
+#button {
+    padding: 5px 50px;
+    position: relative;
+    left: 430px;
+    margin-bottom: 20px;
+}
+
+.left {
+    display: flex;
+    justify-content: center;
+}

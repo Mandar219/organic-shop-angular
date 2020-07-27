@@ -1,0 +1,19 @@
+<div class="card-body">
+    <h5 class="card-title" style="margin-left: 20px;">Order Summary</h5>
+    <p style="margin-left: 20px;">Total Number of Items: <strong>{{ order.items.length }}</strong></p>
+    <ul class="list-group list-group-flush">
+        <li *ngFor="let item of order.items" class="list-group-item">
+            <img [src]="item.product.imageUrl" class="thumbnail" style="margin-right: 18px;">
+            {{ item.quantity }} x {{ item.product.title }}
+            <div class="float-right align">
+                {{ item.totalPrice | currency:'INR' }}
+            </div>
+        </li>
+        <li class="list-group-item font-weight-bold adjust">
+            Total Price
+            <div class="float-right">
+                {{ total() | currency:'INR' }}
+            </div>
+        </li>
+    </ul>
+</div>

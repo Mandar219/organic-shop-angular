@@ -1,0 +1,46 @@
+<nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
+  <div class="container">
+    <a class="navbar-brand" routerLink="/">
+      <svg width="1.7em" height="1.7em" viewBox="0 0 16 16" class="bi bi-chevron-bar-down" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+        <path fill-rule="evenodd" d="M3.646 4.146a.5.5 0 0 1 .708 0L8 7.793l3.646-3.647a.5.5 0 0 1 .708.708l-4 4a.5.5 0 0 1-.708 0l-4-4a.5.5 0 0 1 0-.708zM1 11.5a.5.5 0 0 1 .5-.5h13a.5.5 0 0 1 0 1h-13a.5.5 0 0 1-.5-.5z"/>
+      </svg>
+      <span class="bi-chevron-bar-down" style="margin-left: 4px; font-size: 900; font-weight:initial;">OSHOP</span>
+    </a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+  
+    <div class="collapse navbar-collapse" id="navbarsExampleDefault">
+      <ul class="navbar-nav ml-auto">
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/shopping-cart">
+            <svg width="1.55em" height="1.55em" viewBox="0 0 16 16" class="bi bi-cart2" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+              <path fill-rule="evenodd" d="M0 2.5A.5.5 0 0 1 .5 2H2a.5.5 0 0 1 .485.379L2.89 4H14.5a.5.5 0 0 1 .485.621l-1.5 6A.5.5 0 0 1 13 11H4a.5.5 0 0 1-.485-.379L1.61 3H.5a.5.5 0 0 1-.5-.5zM3.14 5l1.25 5h8.22l1.25-5H3.14zM5 13a1 1 0 1 0 0 2 1 1 0 0 0 0-2zm-2 1a2 2 0 1 1 4 0 2 2 0 0 1-4 0zm9-1a1 1 0 1 0 0 2 1 1 0 0 0 0-2zm-2 1a2 2 0 1 1 4 0 2 2 0 0 1-4 0z"/>
+            </svg>
+            <span class="badge badge-pill badge-light" *ngIf="cart$ | async as cart">
+              {{ cart.totalItemsCount }}
+            </span>
+          </a>
+        </li>
+        <ng-template #anonymousUser>
+          <li class="nav-item">
+            <a class="nav-link font-weight-normal" routerLink="/login">Login</a>
+          </li>
+        </ng-template>
+        <li *ngIf="appUser; else anonymousUser" ngbDropdown class="nav-item dropdown">
+          <a ngbDropdownToggle class="nav-link dropdown-toggle font-weight-normal" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Hello, {{ appUser.name | name }}
+          </a>
+          <div ngbDropdownMenu class="dropdown-menu" aria-labelledby="dropdown01">
+            <a ngbDropdownItem class="dropdown-item" routerLink="/my/orders">My Orders</a>
+            <ng-container *ngIf="appUser.isAdmin">
+              <a ngbDropdownItem class="dropdown-item" routerLink="/admin/orders">Manage Orders</a>
+              <a ngbDropdownItem class="dropdown-item" routerLink="/admin/products">Manage Products</a>
+            </ng-container>
+            <a ngbDropdownItem class="dropdown-item" (click)="logout()">Log Out</a>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </div>
+  </nav>

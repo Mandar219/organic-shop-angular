@@ -1,0 +1,10 @@
+.thumbnail {
+    height: 60px;
+    width: 60px;
+    border-radius: 100%;
+}
+
+.align {
+    position: relative;
+    top: 20px;
+}

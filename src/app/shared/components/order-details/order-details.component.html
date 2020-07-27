@@ -1,0 +1,22 @@
+<h1>Order Details</h1>
+<h5 style="margin-bottom: 20px;">Your Order ID is {{ orderId }}.</h5>
+<div *ngIf="order">
+    <h5 style="margin-bottom: 15px;">Order placed on {{ order.datePlaced | date }}.</h5>
+    <div class="row">
+        <div class="col-7">
+            <order-card [order]="order"></order-card>
+              <div style="margin-top: 10px; margin-bottom: 20px;">
+                  <button 
+                    (click)="goBack()"
+                    class="btn btn-primary btn-sm">Go Back To {{ path | titlecase }} Orders</button>
+              </div>
+        </div>
+        <div class="col-5">
+            <h5>Order delivered to:</h5>
+            <p>{{ order.shipping.name }},</p>
+            <p>{{ order.shipping.addressLine1 }},</p>
+            <p>{{ order.shipping.addressLine2 }},</p>
+            <p>{{ order.shipping.city }} - {{ order.shipping.pincode }}.</p>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,63 @@
+<h1>Your Shopping Cart</h1>
+<ng-container *ngIf="cart$ | async as cart">
+    <div>
+        <h5 style="margin-top: 10px; margin-bottom: 30px; float: left;">
+            You have {{ cart.totalItemsCount }} items in your shopping cart.
+        </h5>
+        <button
+            *ngIf="cart.totalItemsCount"
+            style="margin-top: 10px; margin-bottom: 30px; float: right;"
+            (click)="clearCart()"
+            class="btn btn-danger btn-sm">
+            Clear Shopping Cart
+        </button>
+    </div>
+    <table *ngIf="cart.totalItemsCount" class="table">
+        <thead>
+            <tr>
+                <th></th>
+                <th>Product</th>
+                <th>Quantity</th>
+                <th>Price</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let item of cart.shopItems">
+                <td style="width: 150px;">
+                    <img [src]="item.product.imageUrl" class="thumbnail">
+                </td>
+                <td>{{ item.product.title }}</td>
+                <td>{{ item.quantity }}</td>
+                <td>{{ item.totalPrice | currency:'INR' }}</td>
+            </tr>
+        </tbody>
+        <tfoot>
+            <tr>
+                <th></th>
+                <th></th>
+                <th></th>
+                <th>{{ cart.totalPrice | currency:'INR' }}</th>
+            </tr>
+        </tfoot>
+    </table>
+    <div *ngIf="cart.totalItemsCount === 0">
+        <button
+            (click)="refresh()"
+            class="btn btn-primary continue">
+            Continue Shopping
+        </button>
+    </div>
+    <div style="margin-bottom: 30px;" *ngIf="cart.shopItems.length"> 
+        <a 
+            routerLink="/products"
+            class="btn btn-light">
+            Add More Items to Cart
+        </a>
+        <a 
+            routerLink="/check-out"
+            style="float: right;"
+            class="btn btn-primary">
+            Check Out
+        </a>
+    </div>
+</ng-container>

@@ -1,0 +1,9 @@
+<bs-navbar></bs-navbar>
+<div class="container" *ngIf="isDesktop; else mobileView">
+  <router-outlet></router-outlet>
+</div>
+<ng-template #mobileView>
+  <div class="alert alert-danger">
+    This site is currently not supported for Mobile devices.
+  </div>
+</ng-template>

@@ -1,0 +1,18 @@
+<h2>Your Order has been placed successfully.</h2>
+<h5>Your Order ID is {{ orderId }}.</h5>
+<div *ngIf=order style="margin-top: 20px;">
+    <div class="row">
+        <div class="col-7">
+            <div class="card">
+                <order-card [order]="order"></order-card>
+            </div>
+            <div style="margin-top: 25px;">
+                <h5>Thank You For Shopping With Us!</h5>
+            </div>
+            <div style="margin-top: 10px; margin-bottom: 20px;">
+                <a routerLink="/" class="btn btn-primary">Continue Shopping</a>
+            </div>
+        </div>
+    </div>
+</div>
+

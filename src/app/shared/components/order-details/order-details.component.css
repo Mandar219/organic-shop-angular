@@ -1,0 +1,16 @@
+.thumbnail {
+    height: 60px;
+    width: 60px;
+    border-radius: 100%;
+}
+
+.align {
+    position: relative;
+    top: 20px;
+}
+
+.adjust {
+    font-size: 18px;
+    margin-left: 10px;
+    margin-top: 10px;
+}

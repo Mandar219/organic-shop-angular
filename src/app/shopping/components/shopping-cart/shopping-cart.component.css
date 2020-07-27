@@ -1,0 +1,15 @@
+.thumbnail {
+    width: 70px;
+    height: 70px;
+    border-radius: 100%;
+}
+
+.refresh {
+    margin-bottom: 20px;
+}
+
+.continue {
+    position: relative; 
+    left: -350px; 
+    top: 50px;
+}
